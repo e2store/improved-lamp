@@ -4,7 +4,7 @@ export function SiteHeader() {
       <div className="blessing">صلّ على النبي ﷺ</div>
       <header className="site-header">
         <a className="brand" href="/" aria-label="العودة للرئيسية">
-          <span className="brand-mark">7R</span>
+          <span className="brand-mark">KW</span>
           <span>حسابات <b>🇰🇼 PUBG</b></span>
         </a>
         <nav className="desktop-nav" aria-label="التنقل الرئيسي">

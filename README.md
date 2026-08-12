@@ -1,4 +1,4 @@
-# 7R Loadout Archive
+# Kuwait PUBG Loadout Archive
 
 Arabic-first RTL marketplace for verified PUBG MOBILE account listings in Kuwait.
 

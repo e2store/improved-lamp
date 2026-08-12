@@ -83,7 +83,7 @@ export function Marketplace() {
   return (
     <main className="market-shell">
       <SiteHeader />
-      <div className="archive-spine" aria-hidden="true"><span>7R / LOADOUT ARCHIVE</span><b>29.3759° N · 47.9774° E</b></div>
+      <div className="archive-spine" aria-hidden="true"><span>KW / LOADOUT ARCHIVE</span><b>29.3759° N · 47.9774° E</b></div>
       <section className="inventory-intro">
         <div className="intro-copy"><span className="eyebrow"><i /> مخزون حيّ · الكويت</span><h1>لا تشتري حسابًا.<br /><em>افتح ملفّه أولًا.</em></h1><p>حسابات موثقة وجاهزة للنقل، مرتبة كملفات عتاد واضحة بدل منشورات متفرقة.</p></div>
         <div className="intro-ledger"><Stat value="10" label="ملفات نشطة" /><Stat value="2" label="إضافة جديدة" /><Stat value="1" label="خصم حالي" /><div className="last-check"><span>آخر تحقق</span><b>منذ 12 دقيقة</b></div></div>
