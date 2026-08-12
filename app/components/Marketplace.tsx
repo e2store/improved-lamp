@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { accounts, type Account, statusLabel } from "../data";
+import { siteAsset, siteHref } from "../site-path";
 import { MobileDock, SiteFooter, SiteHeader } from "./SiteHeader";
 
 const telegram = "https://t.me/Qq965";
@@ -20,7 +21,7 @@ function AccountRecord({ account, favorite, onFavorite, onOpen }: { account: Acc
     <article className={`dossier dossier-${account.rarity}`}>
       <button className={`favorite ${favorite ? "is-favorite" : ""}`} onClick={onFavorite} aria-label={favorite ? "إزالة من المفضلة" : "إضافة للمفضلة"}>{favorite ? "★" : "☆"}</button>
       <button className="dossier-main" onClick={onOpen} aria-label={`عرض تفاصيل الحساب ${account.id}`}>
-        <div className="dossier-image"><img src={account.image} alt="عرض بصري للعتاد" loading="lazy" /><span className="serial">FILE / {account.id}</span>{account.video && <span className="video-flag">● فيديو 04:55</span>}</div>
+        <div className="dossier-image"><img src={siteAsset(account.image)} alt="عرض بصري للعتاد" loading="lazy" /><span className="serial">FILE / {account.id}</span>{account.video && <span className="video-flag">● فيديو 04:55</span>}</div>
         <div className="dossier-copy">
           <div className="dossier-top"><Status account={account} />{account.originalPrice && <span className="discount">خصم + هدية</span>}</div>
           <div className="price-line"><strong>{account.price}</strong><span>د.ك</span>{account.originalPrice && <del>{account.originalPrice} د.ك</del>}</div>
@@ -46,7 +47,7 @@ function InspectionDrawer({ account, onClose }: { account: Account; onClose: () 
     <div className="drawer-layer" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
       <aside className="inspection" role="dialog" aria-modal="true" aria-labelledby="inspection-title">
         <button className="drawer-close" onClick={onClose} aria-label="إغلاق">×</button>
-        <div className="drawer-image"><img src={account.image} alt="تفاصيل عتاد الحساب" />{account.video && <span className="video-flag">● عرض فيديو متوفر</span>}</div>
+        <div className="drawer-image"><img src={siteAsset(account.image)} alt="تفاصيل عتاد الحساب" />{account.video && <span className="video-flag">● عرض فيديو متوفر</span>}</div>
         <div className="drawer-head"><div><small>ACCOUNT DOSSIER / {account.id}</small><h2 id="inspection-title">ملف حساب مستوى {account.level}</h2></div><div className="drawer-price"><b>{account.price}</b><span>د.ك</span></div></div>
         <div className="drawer-status"><Status account={account} /><span>تم التحقق: {account.verified}</span></div>
         <div className="drawer-stats"><Stat value={account.rank} label="الرتبة" /><Stat value={account.mythic} label="Mythic" /><Stat value={account.gunLab} label="Gun Lab" /><Stat value={account.killMessages} label="Kill Message" /></div>
@@ -54,7 +55,7 @@ function InspectionDrawer({ account, onClose }: { account: Account; onClose: () 
         <section className="manifest"><header><span>02</span><h3>المقتنيات</h3></header><ul>{account.assets.map((item) => <li key={item}>{item}</li>)}</ul></section>
         <section className="verification"><h3>سجل التحقق</h3>{["تم فحص معلومات الحساب", "طريقة الدخول مؤكدة", "الصور مطابقة للبيان", "جاهز لإجراءات النقل"].map((item, index) => <div key={item}><i>✓</i><span>{item}</span><time>{17 + index}:4{index}</time></div>)}</section>
         <div className="risk-note"><b>مهم قبل الدفع</b><p>أكد التوفر مع البائع وافحص جميع الأدلة. لا يمكن ضمان الحماية من قرارات الناشر أو محاولات الاسترجاع.</p></div>
-        <div className="drawer-actions"><a className="primary-action" href={telegram} target="_blank" rel="noreferrer">احجز عبر تلغرام ↗</a><a href={whatsapp} target="_blank" rel="noreferrer">واتساب</a><a href={`/account/${account.id}`}>رابط مستقل</a></div>
+        <div className="drawer-actions"><a className="primary-action" href={telegram} target="_blank" rel="noreferrer">احجز عبر تلغرام ↗</a><a href={whatsapp} target="_blank" rel="noreferrer">واتساب</a><a href={siteHref(`account/${account.id}`)}>رابط مستقل</a></div>
       </aside>
     </div>
   );
@@ -90,7 +91,7 @@ export function Marketplace() {
       </section>
 
       <section className="featured-file" aria-label="الحساب المميز">
-        <div className="featured-visual"><img src={featured.image} alt="عتاد M416 ثلجي داخل خزنة" /><span className="featured-index">01 / FEATURED</span></div>
+        <div className="featured-visual"><img src={siteAsset(featured.image)} alt="عتاد M416 ثلجي داخل خزنة" /><span className="featured-index">01 / FEATURED</span></div>
         <div className="featured-panel">
           <Status account={featured} />
           <div className="featured-price"><strong>{featured.price}</strong><span>د.ك</span></div>
